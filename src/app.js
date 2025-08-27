@@ -17,7 +17,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // routes imports
+import healthCheckRouter from "./routes/health_check.route.js";
 
 // routes declarations
+app.use("/api/v1/health-check", healthCheckRouter);
 
 export { app };
