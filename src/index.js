@@ -1,16 +1,14 @@
 import "dotenv/config";
-import express from "express";
+import { app } from "./app.js";
 import envVars from "./config/env.js";
 import connectDB from "./db/index.js";
-
-const app = express();
 
 (async () => {
   try {
     await connectDB();
 
-    app.listen(envVars.PORT || 8000, () => {
-      console.log(`⚙️ Server is running at port : ${process.env.PORT || 8000}`);
+    app.listen(envVars.PORT, () => {
+      console.log(`⚙️ Server is running at port : ${envVars.PORT}`);
     });
 
     app.on("error", (err) => {
